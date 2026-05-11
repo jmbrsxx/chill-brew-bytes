@@ -3,11 +3,9 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
-const repoBase = '/chill-brew-bytes/'
-
 // https://vitejs.dev/config/
-export default defineConfig({
-  base: repoBase,
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/chill-brew-bytes/' : '/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -18,4 +16,4 @@ export default defineConfig({
     outDir: 'docs',
     emptyOutDir: true,
   },
-})
+}))
