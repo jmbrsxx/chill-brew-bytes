@@ -2,13 +2,12 @@ import { QueryClient } from "@tanstack/react-query";
 import { createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 
-// Determine base path for different environments
+// Determine base path at runtime
 const getBasePath = () => {
-  // For production (GitHub Pages), use the repository path
-  if (import.meta.env.PROD) {
+  // Check if we're on GitHub Pages by looking at the hostname
+  if (typeof window !== 'undefined' && window.location.hostname === 'jmbrsxx.github.io') {
     return '/chill-brew-bytes';
   }
-  // For development, use root
   return '';
 };
 
